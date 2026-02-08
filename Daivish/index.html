@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Pushhu - My Forever 🖤</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Italiana&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&family=Crimson+Text:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --midnight: #000000;
+            --charcoal: #0f0f0f;
+            --blood-red: #8B0000;
+            --crimson: #DC143C;
+            --wine: #4A0E0E;
+            --deep-purple: #1a0a1f;
+            --silver: #D4D4D4;
+            --gold: #C9A961;
+            --moonlight: #F5F5F5;
+            --rose: #FF6B9D;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #000000;
+            color: var(--moonlight);
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Sophisticated Background */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background: radial-gradient(ellipse at top, #1a0a1f 0%, #000000 60%);
+        }
+
+        .moon {
+            position: absolute;
+            top: 8%;
+            right: 10%;
+            width: clamp(80px, 20vw, 150px);
+            height: clamp(80px, 20vw, 150px);
+            background: radial-gradient(circle at 30% 30%, #ffffff 0%, #e8e8e8 50%, #b8b8b8 100%);
+            border-radius: 50%;
+            box-shadow: 
+                0 0 100px rgba(255, 255, 255, 0.4),
+                0 0 200px rgba(255, 255, 255, 0.2),
+                inset -20px -20px 40px rgba(0, 0, 0, 0.2);
+            animation: moonFloat 8s ease-in-out infinite;
+        }
+
+        @keyframes moonFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .mist {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, 
+                rgba(139, 0, 0, 0.08) 0%, 
+                rgba(26, 10, 31, 0.05) 30%,
+                transparent 100%);
+            animation: mistFlow 15s ease-in-out infinite;
+        }
+
+        @keyframes mistFlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 0.9; }
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: var(--crimson);
+            border-radius: 50%;
+            opacity: 0;
+            animation: floatParticle 20s linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0);
+                opacity: 0;
+            }
+            5% { opacity: 0.8; }
+            95% { opacity: 0.8; }
+            100% {
+                transform: translateY(-100px) translateX(50px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            opacity: 0;
+            animation: fadeInSection 1.8s ease-out forwards;
+        }
+
+        @keyframes fadeInSection {
+            to { opacity: 1; }
+        }
+
+        /* Proposal Section */
+        .proposal-section {
+            position: relative;
+        }
+
+        .proposal-wrapper {
+            max-width: 650px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .proposal-card {
+            background: linear-gradient(145deg, 
+                rgba(15, 15, 15, 0.95) 0%, 
+                rgba(26, 10, 31, 0.9) 100%);
+            border: 1px solid rgba(139, 0, 0, 0.3);
+            border-radius: 30px;
+            padding: clamp(50px, 10vw, 80px) clamp(25px, 8vw, 50px);
+            position: relative;
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 30px 90px rgba(0, 0, 0, 0.8),
+                0 0 100px rgba(139, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+        }
+
+        .proposal-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, 
+                rgba(139, 0, 0, 0.1) 0%, 
+                transparent 70%);
+            opacity: 0.5;
+            animation: cardPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes cardPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        .proposal-subtitle-top {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            color: var(--gold);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 3px;
+            font-weight: 400;
+            text-transform: uppercase;
+        }
+
+        .proposal-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 9vw, 5rem);
+            color: var(--crimson);
+            margin-bottom: 15px;
+            line-height: 1.3;
+            position: relative;
+            z-index: 1;
+            text-shadow: 
+                0 0 30px rgba(220, 20, 60, 0.6),
+                0 0 60px rgba(220, 20, 60, 0.3);
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 30px rgba(220, 20, 60, 0.6),
+                    0 0 60px rgba(220, 20, 60, 0.3);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 40px rgba(220, 20, 60, 0.8),
+                    0 0 80px rgba(220, 20, 60, 0.4);
+            }
+        }
+
+        .proposal-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            color: var(--silver);
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Button Container - Mobile First */
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            position: relative;
+            z-index: 2;
+            min-height: 70px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            font-weight: 500;
+            padding: clamp(16px, 4vw, 20px) clamp(40px, 10vw, 60px);
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, var(--blood-red) 0%, var(--crimson) 100%);
+            color: white;
+            box-shadow: 
+                0 10px 40px rgba(139, 0, 0, 0.5),
+                0 0 0 1px rgba(220, 20, 60, 0.3);
+            position: relative;
+            z-index: 3;
+        }
+
+        .btn-yes::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .btn-yes:hover {
+            box-shadow: 
+                0 15px 50px rgba(220, 20, 60, 0.7),
+                0 0 60px rgba(220, 20, 60, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .btn-yes:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-yes:hover::before {
+            opacity: 1;
+        }
+
+        /* NO BUTTON - VISIBLE BUT ESCAPES ON HOVER */
+        .btn-no {
+            background: transparent;
+            color: var(--silver);
+            border: 2px solid rgba(212, 212, 212, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .btn-no.moving {
+            position: fixed !important;
+        }
+
+        /* Acceptance Section */
+        .acceptance-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .acceptance-section.active {
+            display: flex;
+            animation: fadeInScale 2s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .acceptance-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2rem, 7vw, 4.5rem);
+            color: var(--crimson);
+            text-align: center;
+            line-height: 1.5;
+            text-shadow: 
+                0 0 40px rgba(220, 20, 60, 0.8),
+                0 0 80px rgba(220, 20, 60, 0.4);
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .glowing-heart {
+            font-size: clamp(4rem, 15vw, 7rem);
+            animation: heartPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(220, 20, 60, 1));
+        }
+
+        @keyframes heartPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        /* Falling Petals */
+        .falling-petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .petal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(ellipse, var(--crimson) 0%, var(--blood-red) 100%);
+            border-radius: 50% 0 50% 0;
+            animation: petalFall 10s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes petalFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Special Message Section for Pushhu */
+        .special-message-section {
+            flex-direction: column;
+            padding: clamp(60px, 15vw, 100px) 20px;
+        }
+
+        .special-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(201, 169, 97, 0.3);
+        }
+
+        .special-card {
+            background: linear-gradient(145deg, 
+                rgba(15, 15, 15, 0.9) 0%, 
+                rgba(26, 10, 31, 0.8) 100%);
+            border: 1px solid rgba(201, 169, 97, 0.3);
+            border-radius: 25px;
+            padding: clamp(40px, 8vw, 60px) clamp(30px, 6vw, 50px);
+            max-width: 750px;
+            width: 100%;
+            margin: 0 auto;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .special-text {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            line-height: 2;
+            color: var(--moonlight);
+            text-align: center;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .special-text .highlight {
+            color: var(--rose);
+            font-weight: 400;
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Love Notes Section */
+        .notes-section {
+            flex-direction: column;
+            gap: clamp(40px, 8vw, 60px);
+            padding: clamp(60px, 15vw, 100px) 20px;
+        }
+
+        .note-card {
+            background: linear-gradient(145deg, 
+                rgba(15, 15, 15, 0.8) 0%, 
+                rgba(26, 10, 31, 0.7) 100%);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            border-radius: 20px;
+            padding: clamp(40px, 8vw, 60px) clamp(25px, 6vw, 40px);
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .note-card::before {
+            content: '🕯️';
+            position: absolute;
+            top: clamp(20px, 5vw, 30px);
+            left: clamp(20px, 5vw, 30px);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            animation: candleFlicker 4s ease-in-out infinite;
+        }
+
+        @keyframes candleFlicker {
+            0%, 100% { opacity: 1; filter: brightness(1); }
+            25% { opacity: 0.85; filter: brightness(0.9); }
+            50% { opacity: 0.95; filter: brightness(1.1); }
+            75% { opacity: 0.9; filter: brightness(0.95); }
+        }
+
+        .note-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            line-height: 2;
+            color: var(--moonlight);
+            font-style: italic;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        /* Memory Lane Section */
+        .memory-section {
+            flex-direction: column;
+            gap: clamp(40px, 8vw, 60px);
+            padding: clamp(60px, 15vw, 100px) 20px;
+        }
+
+        .memory-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--crimson);
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(220, 20, 60, 0.4);
+        }
+
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .memory-item {
+            background: linear-gradient(145deg, 
+                rgba(15, 15, 15, 0.85) 0%, 
+                rgba(26, 10, 31, 0.75) 100%);
+            border: 1px solid rgba(139, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: clamp(30px, 6vw, 40px);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .memory-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(139, 0, 0, 0.4);
+        }
+
+        .memory-icon {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        .memory-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            color: var(--silver);
+            text-align: center;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        /* Shayari Section */
+        .shayari-section {
+            flex-direction: column;
+            gap: clamp(50px, 10vw, 80px);
+            padding: clamp(60px, 15vw, 100px) 20px;
+        }
+
+        .shayari-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(201, 169, 97, 0.3);
+        }
+
+        .shayari-card {
+            background: linear-gradient(145deg, 
+                rgba(10, 10, 10, 0.9) 0%, 
+                rgba(26, 10, 31, 0.8) 100%);
+            border: 2px solid rgba(139, 0, 0, 0.4);
+            border-radius: 25px;
+            padding: clamp(50px, 10vw, 70px) clamp(30px, 6vw, 40px);
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            backdrop-filter: blur(15px);
+            box-shadow: 
+                0 25px 70px rgba(0, 0, 0, 0.7),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .shayari-card::after {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: clamp(15px, 4vw, 30px);
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-family: 'Playfair Display', serif;
+            color: rgba(139, 0, 0, 0.15);
+            line-height: 0.8;
+        }
+
+        .shayari-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            line-height: 2.2;
+            color: var(--moonlight);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .shayari-text em {
+            color: var(--crimson);
+            font-style: normal;
+            text-shadow: 0 0 20px rgba(220, 20, 60, 0.4);
+        }
+
+        /* Promise Section */
+        .promise-section {
+            flex-direction: column;
+            gap: clamp(40px, 8vw, 60px);
+            padding: clamp(60px, 15vw, 100px) 20px;
+        }
+
+        .promise-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            color: var(--rose);
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .promise-list {
+            list-style: none;
+            max-width: 750px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .promise-item {
+            background: linear-gradient(145deg, 
+                rgba(15, 15, 15, 0.8) 0%, 
+                rgba(26, 10, 31, 0.7) 100%);
+            border-left: 3px solid var(--crimson);
+            border-radius: 10px;
+            padding: clamp(20px, 5vw, 30px);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .promise-item:nth-child(1) { animation-delay: 0.1s; }
+        .promise-item:nth-child(2) { animation-delay: 0.2s; }
+        .promise-item:nth-child(3) { animation-delay: 0.3s; }
+        .promise-item:nth-child(4) { animation-delay: 0.4s; }
+        .promise-item:nth-child(5) { animation-delay: 0.5s; }
+
+        .promise-item-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: var(--silver);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .promise-item-icon {
+            margin-right: 15px;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        /* Why You Section */
+        .why-section {
+            flex-direction: column;
+            padding: clamp(60px, 15vw, 100px) 20px;
+        }
+
+        .why-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: var(--crimson);
+            text-align: center;
+            margin-bottom: clamp(50px, 10vw, 80px);
+            letter-spacing: 1px;
+            text-shadow: 0 0 40px rgba(220, 20, 60, 0.4);
+        }
+
+        .why-list {
+            list-style: none;
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+            padding: clamp(20px, 5vw, 25px) 0;
+            text-align: center;
+            color: var(--silver);
+            opacity: 0;
+            animation: itemSlideIn 0.8s ease-out forwards;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .why-item::before {
+            content: '◆';
+            margin-right: 20px;
+            color: var(--crimson);
+            font-size: 0.8em;
+            animation: diamondGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes itemSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes diamondGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 5px rgba(220, 20, 60, 0.4));
+                transform: scale(1);
+            }
+            50% { 
+                filter: drop-shadow(0 0 10px rgba(220, 20, 60, 0.8));
+                transform: scale(1.2);
+            }
+        }
+
+        .why-item:nth-child(1) { animation-delay: 0.1s; }
+        .why-item:nth-child(2) { animation-delay: 0.2s; }
+        .why-item:nth-child(3) { animation-delay: 0.3s; }
+        .why-item:nth-child(4) { animation-delay: 0.4s; }
+        .why-item:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Final Vow Section */
+        .vow-section {
+            flex-direction: column;
+            align-items: center;
+            gap: clamp(30px, 8vw, 50px);
+            padding: clamp(60px, 15vw, 100px) 20px;
+        }
+
+        .vow-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            color: var(--crimson);
+            text-align: center;
+            line-height: 1.4;
+            max-width: 900px;
+            text-shadow: 
+                0 0 50px rgba(220, 20, 60, 0.8),
+                0 0 100px rgba(220, 20, 60, 0.4);
+            padding: 0 20px;
+        }
+
+        .vow-heart {
+            font-size: clamp(5rem, 15vw, 8rem);
+            animation: heartPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 50px rgba(220, 20, 60, 1));
+        }
+
+        /* Sound Toggle */
+        .sound-toggle {
+            position: fixed;
+            bottom: clamp(20px, 5vw, 40px);
+            right: clamp(20px, 5vw, 40px);
+            background: linear-gradient(135deg, var(--blood-red) 0%, var(--crimson) 100%);
+            color: white;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 50%;
+            width: clamp(50px, 12vw, 65px);
+            height: clamp(50px, 12vw, 65px);
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            cursor: pointer;
+            box-shadow: 
+                0 10px 30px rgba(139, 0, 0, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sound-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 
+                0 15px 40px rgba(220, 20, 60, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .sound-toggle:active {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .memory-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .shayari-card::after {
+                font-size: 4rem;
+                top: 5px;
+                left: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 30px 15px;
+            }
+
+            .moon {
+                top: 5%;
+                right: 5%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background -->
+    <div class="background-container">
+        <div class="moon"></div>
+        <div class="stars" id="stars"></div>
+        <div class="mist"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Section 1: Proposal -->
+        <section class="proposal-section" id="proposalSection">
+            <div class="proposal-wrapper">
+                <div class="proposal-card">
+                    <p class="proposal-subtitle-top">Dear Pushhu</p>
+                    <h1 class="proposal-title">Will you be mine...<br>forever?</h1>
+                    <p class="proposal-subtitle">🩸 In darkness, I found my light 🖤</p>
+                    <div class="button-container" id="btnContainer">
+                        <button class="btn btn-yes" id="yesBtn">Yes 🖤</button>
+                        <button class="btn btn-no" id="noBtn">No ❌</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Acceptance -->
+        <section class="acceptance-section" id="acceptanceSection">
+            <p class="acceptance-text">Pushhu, you have awakened my heart… 🩸<br>I choose you. Always. ❤️</p>
+            <div class="glowing-heart">❤️</div>
+        </section>
+
+        <!-- Section 3: Special Message for Pushhu -->
+        <section class="special-message-section">
+            <h2 class="special-title">A Letter to Pushhu</h2>
+            <div class="special-card">
+                <p class="special-text">
+                    My dearest <span class="highlight">Pushhu</span>,<br><br>
+                    In a world full of temporary moments, you became my forever. 
+                    From the very first time I saw you, I knew you were different — 
+                    you weren't just another person passing through my life. 
+                    You were the missing piece I didn't even know I was searching for.<br><br>
+                    You are my <span class="highlight">moonlight in the darkness</span>, 
+                    my <span class="highlight">calm in every storm</span>, 
+                    and the reason my heart beats with purpose. 
+                    With you, I've learned what it means to truly love someone — 
+                    selflessly, deeply, eternally.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 4: Love Notes -->
+        <section class="notes-section">
+            <div class="note-card">
+                <p class="note-text">"From the moment you entered my life, my world became darker in the most beautiful way — because now it shines with you."</p>
+            </div>
+            <div class="note-card">
+                <p class="note-text">"I don't just love you for who you are, but for who I become when I'm with you."</p>
+            </div>
+            <div class="note-card">
+                <p class="note-text">"Every heartbeat whispers your name, Pushhu. You are the rhythm of my existence."</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Memory Lane -->
+        <section class="memory-section">
+            <h2 class="memory-title">Our Beautiful Moments</h2>
+            <div class="memory-grid">
+                <div class="memory-item">
+                    <span class="memory-icon">💫</span>
+                    <p class="memory-text">The first time our eyes met, and the world stood still</p>
+                </div>
+                <div class="memory-item">
+                    <span class="memory-icon">🌙</span>
+                    <p class="memory-text">Late night conversations that made me fall deeper for you</p>
+                </div>
+                <div class="memory-item">
+                    <span class="memory-icon">💝</span>
+                    <p class="memory-text">Every smile you gave me that brightened my darkest days</p>
+                </div>
+                <div class="memory-item">
+                    <span class="memory-icon">🌹</span>
+                    <p class="memory-text">The moment I realized you were my forever</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Romantic Shayari -->
+        <section class="shayari-section">
+            <h2 class="shayari-title">Words From My Soul</h2>
+            
+            <div class="shayari-card">
+                <p class="shayari-text">
+                    In the <em>silence of midnight</em>, I found your name,<br>
+                    Whispered by the wind, written in the stars.<br>
+                    My heart beats only for you, my love,<br>
+                    You are the <em>moonlight</em> in my eternal darkness,<br>
+                    The one soul my immortal being has searched for<br>
+                    Through <em>centuries of solitude</em>.
+                </p>
+            </div>
+
+            <div class="shayari-card">
+                <p class="shayari-text">
+                    They say vampires don't have hearts,<br>
+                    But mine <em>awakened</em> the moment I saw you, Pushhu.<br>
+                    You are my beginning and my forever,<br>
+                    The <em>blood</em> that flows through my veins,<br>
+                    The reason I choose to exist in this world,<br>
+                    My love, my light, my <em>eternity</em>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 7: My Promises to Pushhu -->
+        <section class="promise-section">
+            <h2 class="promise-title">My Promises to You, Pushhu</h2>
+            <ul class="promise-list">
+                <li class="promise-item">
+                    <span class="promise-item-icon">💍</span>
+                    <span class="promise-item-text">I promise to love you in every lifetime, in every universe</span>
+                </li>
+                <li class="promise-item">
+                    <span class="promise-item-icon">🌟</span>
+                    <span class="promise-item-text">I promise to be your safe place when the world feels heavy</span>
+                </li>
+                <li class="promise-item">
+                    <span class="promise-item-icon">🔥</span>
+                    <span class="promise-item-text">I promise to keep the fire of our love burning eternally</span>
+                </li>
+                <li class="promise-item">
+                    <span class="promise-item-icon">🌹</span>
+                    <span class="promise-item-text">I promise to choose you, every single day, without hesitation</span>
+                </li>
+                <li class="promise-item">
+                    <span class="promise-item-icon">♾️</span>
+                    <span class="promise-item-text">I promise that my love for you will never fade, never end</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section 8: Why You Are My Forever -->
+        <section class="why-section">
+            <h2 class="why-title">Why You Are My Forever, Pushhu</h2>
+            <ul class="why-list">
+                <li class="why-item">You understand my darkness</li>
+                <li class="why-item">You calm my storms</li>
+                <li class="why-item">You make my world brighter</li>
+                <li class="why-item">You are my home</li>
+                <li class="why-item">You are my forever</li>
+            </ul>
+        </section>
+
+        <!-- Section 9: Final Vow -->
+        <section class="vow-section">
+            <p class="vow-text">In this life and every life after…<br>Pushhu, I choose you. 🖤</p>
+            <div class="vow-heart">❤️</div>
+        </section>
+    </div>
+
+    <!-- Sound Toggle -->
+
+  
+
+    <script>
+        // Create stars
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Create particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 20 + 's';
+            particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+            particlesContainer.appendChild(particle);
+        }
+
+        // Yes button - Show acceptance
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const proposalSection = document.getElementById('proposalSection');
+        const acceptanceSection = document.getElementById('acceptanceSection');
+
+        // No button escape logic
+        function moveNoButton(e) {
+            e.preventDefault();
+            
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            
+            // Safe margins from edges
+            const margin = 40;
+            const maxX = viewportWidth - btnWidth - margin;
+            const maxY = viewportHeight - btnHeight - margin;
+            
+            // Random position within safe bounds
+            let newX = Math.random() * (maxX - margin) + margin;
+            let newY = Math.random() * (maxY - margin) + margin;
+            
+            // Ensure minimum distance from Yes button
+            const yesBtnRect = yesBtn.getBoundingClientRect();
+            const minDistance = 150;
+            
+            // Keep trying until we get a good position away from Yes button
+            let attempts = 0;
+            while (attempts < 15) {
+                const distance = Math.sqrt(
+                    Math.pow(newX - yesBtnRect.left, 2) + 
+                    Math.pow(newY - yesBtnRect.top, 2)
+                );
+                
+                if (distance > minDistance) break;
+                
+                newX = Math.random() * (maxX - margin) + margin;
+                newY = Math.random() * (maxY - margin) + margin;
+                attempts++;
+            }
+            
+            noBtn.classList.add('moving');
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+        }
+
+        // Add hover and touch events to NO button
+        noBtn.addEventListener('mouseenter', moveNoButton);
+        noBtn.addEventListener('touchstart', moveNoButton);
+        
+        // Prevent click on No button - just move it
+        noBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            moveNoButton(e);
+        });
+
+        yesBtn.addEventListener('click', () => {
+            proposalSection.classList.add('hidden');
+            acceptanceSection.classList.add('active');
+            
+            // Create falling petals
+            const petalsContainer = document.createElement('div');
+            petalsContainer.className = 'falling-petals';
+            document.body.appendChild(petalsContainer);
+            
+            for (let i = 0; i < 50; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
+                petal.style.left = Math.random() * 100 + '%';
+                petal.style.animationDelay = Math.random() * 5 + 's';
+                petal.style.animationDuration = (Math.random() * 6 + 8) + 's';
+                petalsContainer.appendChild(petal);
+            }
+
+            // Smooth scroll
+            setTimeout(() => {
+                acceptanceSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
+        });
+
+        // Sound toggle
+        const soundToggle = document.getElementById('soundToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let isMuted = true;
+
+        soundToggle.addEventListener('click', () => {
+            if (isMuted) {
+                bgMusic.play().catch(e => console.log('Audio play failed:', e));
+                soundToggle.textContent = '🔊';
+                isMuted = false;
+            } else {
+                bgMusic.pause();
+                soundToggle.textContent = '🔇';
+                isMuted = true;
+            }
+        });
+
+        // Smooth scroll for all sections
+        document.addEventListener('DOMContentLoaded', () => {
+            document.documentElement.style.scrollBehavior = 'smooth';
+        });
+    </script>
+</body>
+</html>
