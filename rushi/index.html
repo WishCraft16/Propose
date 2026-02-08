@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blush-pink: #FFE5E5;
+            --soft-pink: #FFB6C1;
+            --cream: #FFF8F0;
+            --rose: #FF9EB5;
+            --text-dark: #6B4E5B;
+            --text-light: #9A7C87;
+            --accent: #FF6B9D;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            background: var(--cream);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            position: relative;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .page.active {
+            opacity: 1;
+        }
+
+        .page.hidden {
+            display: none;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--blush-pink), var(--cream), var(--soft-pink));
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            animation: floatUp 8s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Page 1 - Initial Question */
+        .glow-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            text-align: center;
+            color: var(--accent);
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+            margin-bottom: 2rem;
+            animation: gentleGlow 3s ease-in-out infinite;
+            line-height: 1.3;
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255, 107, 157, 0.3); }
+            50% { text-shadow: 0 0 40px rgba(255, 107, 157, 0.6); }
+        }
+
+        .teddy-container {
+            width: 280px;
+            height: 280px;
+            margin: 2rem auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .teddy-gif {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            animation: teddyAppear 1s ease-out;
+            border-radius: 20px;
+        }
+
+        @keyframes teddyAppear {
+            0% {
+                transform: scale(0) rotate(-10deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Buttons */
+        .button-container {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #FF6B9D, #FF9EB5);
+            color: white;
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 157, 0.4);
+        }
+
+        .btn-no {
+            background: linear-gradient(135deg, #FFE5E5, #FFB6C1);
+            color: var(--text-dark);
+        }
+
+        .btn-no:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 181, 193, 0.4);
+        }
+
+        .btn-smile {
+            background: linear-gradient(135deg, #FFE5E5, #FFF8F0);
+            color: var(--text-dark);
+        }
+
+        .btn-smile:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 229, 229, 0.4);
+        }
+
+        /* Wait Text */
+        .wait-text {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-light);
+            text-align: center;
+            margin-top: 1.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Story Pages */
+        .story-content {
+            max-width: 500px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .story-title {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            color: var(--accent);
+            margin-bottom: 2rem;
+            animation: slideDown 0.8s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .story-text {
+            font-size: clamp(1.1rem, 4vw, 1.4rem);
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .story-text:nth-child(2) { animation-delay: 0.3s; }
+        .story-text:nth-child(3) { animation-delay: 0.6s; }
+        .story-text:nth-child(4) { animation-delay: 0.9s; }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+        }
+
+        /* Cards */
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            box-shadow: 0 8px 32px rgba(255, 107, 157, 0.15);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: cardAppear 0.6s ease forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.4s; }
+        .card:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes cardAppear {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card h3 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Dark Mode for Page 4 */
+        .dark-bg {
+            background: linear-gradient(135deg, #6B4E5B, #4A3845, #6B4E5B);
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        .dark-bg .story-title,
+        .dark-bg .story-text {
+            color: var(--blush-pink);
+        }
+
+        /* Continue Button */
+        .continue-btn {
+            margin-top: 3rem;
+            animation: fadeIn 1.5s ease forwards;
+            animation-delay: 1.2s;
+            opacity: 0;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: var(--accent);
+            top: -10%;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Final Message */
+        .final-message {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            text-align: center;
+            color: var(--accent);
+            line-height: 1.6;
+            animation: scaleIn 1s ease forwards;
+            margin-top: 2rem;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Music Toggle */
+        .music-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid var(--soft-pink);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-toggle:hover {
+            transform: scale(1.1);
+            background: var(--soft-pink);
+        }
+
+        /* Teddy Walking Animation */
+        .teddy-walk {
+            animation: gentleFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Teddy Small (removed as not used) */
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 480px) {
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 1.1rem;
+            }
+            
+            .teddy-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .music-toggle {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+                bottom: 1rem;
+                right: 1rem;
+            }
+        }
+
+        /* Smooth Transitions */
+        .fade-transition {
+            animation: fadeTransition 0.8s ease;
+        }
+
+        @keyframes fadeTransition {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+     <!-- 🎵 AUDIO (ADDED ONLY THIS) -->
+    <audio id="bgMusic" loop>
+     <source src="aud1.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Animated Background -->
+    <div class="animated-bg" id="animatedBg"></div>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Music Toggle -->
+    <div class="music-toggle" id="musicToggle" title="Toggle Music">
+        🎵
+
+    </div>
+
+    <!-- Page 1: Initial Question -->
+    <div class="page active" id="page1">
+        <h1 class="glow-text">Will you be my Valentine?</h1>
+        <div class="teddy-container">
+            <img src="teddylove.webp" alt="Teddy with heart" class="teddy-gif">
+        </div>
+        <div class="button-container">
+            <button class="btn btn-yes" id="btnYes1">Yes 💕</button>
+            <button class="btn btn-no" id="btnNo1">No 🧸</button>
+        </div>
+        <div id="waitText"></div>
+    </div>
+
+    <!-- Page 2: Emotion Build (formerly Page 3) -->
+    <div class="page hidden" id="page2">
+        <div class="story-content">
+            <div class="teddy-container">
+                <img src="gif2.gif" alt="Shy teddy" class="teddy-gif">
+            </div>
+            <p class="story-text" style="font-size: 1.6rem; font-family: 'Libre Baskerville', serif; color: var(--accent);">You became his favorite thought.</p>
+            <p class="story-text" style="font-size: 1.4rem; margin-top: 1.5rem;">Not suddenly...</p>
+            <p class="story-text" style="font-size: 1.4rem;">But honestly.</p>
+            <button class="btn btn-yes continue-btn" id="btnContinue2">Continue 🌸</button>
+        </div>
+    </div>
+
+    <!-- Page 3: Why You Matter (formerly Page 4) -->
+    <div class="page hidden" id="page3">
+        <div class="story-content">
+            <h2 class="story-title">Here's why you matter...</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                        <img src="gif11.gif" alt="smile" style="width: 70px; height: 70px;">
+                        <h3 style="margin: 0;">Your Smile</h3>
+                    </div>
+                    <p>It lights up every room and makes the world feel softer</p>
+                </div>
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                        <img src="gif12.webp" alt="kindness" style="width: 70px; height: 70px;">
+                        <h3 style="margin: 0;">Your Kindness</h3>
+                    </div>
+                    <p>The way you care for others is pure magic</p>
+                </div>
+                <div class="card">
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem;">
+                        <img src="gif13.gif" alt="presence" style="width: 70px; height: 70px;">
+                        <h3 style="margin: 0;">Your Presence</h3>
+                    </div>
+                    <p>Everything feels better when you're around</p>
+                </div>
+            </div>
+            <button class="btn btn-yes continue-btn" id="btnContinue3">Continue 🌷</button>
+        </div>
+    </div>
+
+    <!-- Page 4: Pause Before Final (formerly Page 5) -->
+    <div class="page hidden dark-bg" id="page4">
+        <div class="story-content">
+            <div class="teddy-container">
+                <img src="gif3.webp" alt="Teddy with heart" class="teddy-gif">
+            </div>
+            <p class="story-text" style="font-size: 1.5rem; font-family: 'Libre Baskerville', serif;">So now that you know the story...</p>
+            <button class="btn btn-yes continue-btn" id="btnContinue4">Continue 🌙</button>
+        </div>
+    </div>
+
+    <!-- Page 5: Final Proposal (formerly Page 6) -->
+    <div class="page hidden" id="page5">
+        <div class="story-content">
+            <div class="teddy-container">
+                <img src="gif5.gif" alt="Teddy offering heart" class="teddy-gif">
+            </div>
+            <h1 class="glow-text" style="margin-top: 2rem;">Will you be my Valentine?</h1>
+            <div class="button-container" id="finalButtons">
+                <button class="btn btn-smile" id="btnSmile">Smile First 😊</button>
+                <button class="btn btn-yes" id="btnYesFinal">Yes 💖</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 6: Happy Ending (formerly Page 7) -->
+    <div class="page hidden" id="page6">
+        <div class="story-content">
+            <div class="teddy-container">
+                <img src="gif6.webp" alt="Happy teddy" class="teddy-gif">
+            </div>
+            <h2 class="final-message">You just made this Valentine unforgettable 💕</h2>
+        </div>
+    </div>
+
+    <script>
+       
+        // Floating Hearts
+        function createFloatingHearts() {
+            const container = document.getElementById('floatingHearts');
+            const hearts = ['💕', '💖', '💗', '💝', '💓', '❤️', '🌸', '✨'];
+            
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(heart);
+                
+                setTimeout(() => heart.remove(), 10000);
+            }, 800);
+        }
+
+        // Sparkles
+        function createSparkles(x, y) {
+            const sparkles = ['✨', '⭐', '💫', '🌟'];
+            for (let i = 0; i < 5; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+                sparkle.style.left = (x + (Math.random() - 0.5) * 100) + 'px';
+                sparkle.style.top = (y + (Math.random() - 0.5) * 100) + 'px';
+                sparkle.style.animationDelay = (Math.random() * 0.5) + 's';
+                document.body.appendChild(sparkle);
+                
+                setTimeout(() => sparkle.remove(), 2000);
+            }
+        }
+
+        // Page Navigation
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+                page.classList.add('hidden');
+            });
+            
+            const targetPage = document.getElementById(pageId);
+            targetPage.classList.remove('hidden');
+            setTimeout(() => targetPage.classList.add('active'), 50);
+        }
+
+        // Page 1: Initial Question
+        document.getElementById('btnYes1').addEventListener('click', function() {
+            const waitText = document.getElementById('waitText');
+            waitText.innerHTML = '<p class="wait-text">Before you answer... let me show you something.</p>';
+            
+            setTimeout(() => {
+                showPage('page2');
+            }, 2500);
+        });
+
+        document.getElementById('btnNo1').addEventListener('click', function() {
+            const waitText = document.getElementById('waitText');
+            waitText.innerHTML = '<p class="wait-text">That\'s okay... just stay for a moment 🌷</p>';
+            
+            setTimeout(() => {
+                showPage('page2');
+            }, 2500);
+        });
+
+        // Page 2 to 3 (formerly 3 to 4)
+        document.getElementById('btnContinue2').addEventListener('click', function() {
+            showPage('page3');
+        });
+
+        // Page 3 to 4 (formerly 4 to 5)
+        document.getElementById('btnContinue3').addEventListener('click', function() {
+            const bg = document.getElementById('animatedBg');
+            bg.classList.add('dark-bg');
+            showPage('page4');
+        });
+
+        // Page 4 to 5 (formerly 5 to 6)
+        document.getElementById('btnContinue4').addEventListener('click', function() {
+            const bg = document.getElementById('animatedBg');
+            bg.classList.remove('dark-bg');
+            showPage('page5');
+        });
+
+        // Final Page Logic
+        document.getElementById('btnSmile').addEventListener('click', function() {
+            this.style.opacity = '0';
+            this.style.transform = 'scale(0)';
+            
+            setTimeout(() => {
+                this.remove();
+                const yesBtn = document.getElementById('btnYesFinal');
+                yesBtn.style.transform = 'scale(1.2)';
+                setTimeout(() => yesBtn.style.transform = 'scale(1)', 300);
+            }, 500);
+        });
+
+        document.getElementById('btnYesFinal').addEventListener('click', function() {
+            createConfetti();
+            showPage('page6');
+        });
+
+        // Confetti Animation
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.className = 'confetti';
+            document.body.appendChild(confettiContainer);
+            
+            const colors = ['#FF6B9D', '#FFB6C1', '#FFE5E5', '#FF9EB5', '#FFF8F0'];
+            const symbols = ['💕', '💖', '💗', '💝', '🌸', '🌹', '❤️'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const isSymbol = Math.random() > 0.5;
+                    const piece = document.createElement('div');
+                    piece.className = 'confetti-piece';
+                    
+                    if (isSymbol) {
+                        piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                        piece.style.fontSize = '1.5rem';
+                        piece.style.background = 'transparent';
+                    } else {
+                        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+                        piece.style.width = Math.random() * 15 + 5 + 'px';
+                        piece.style.height = Math.random() * 15 + 5 + 'px';
+                    }
+                    
+                    piece.style.left = Math.random() * 100 + '%';
+                    piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    piece.style.animationDelay = Math.random() * 0.5 + 's';
+                    confettiContainer.appendChild(piece);
+                }, i * 30);
+            }
+            
+            setTimeout(() => confettiContainer.remove(), 5000);
+        }
+
+        // Initialize
+        createFloatingHearts();
+
+        // Add sparkle effects on button hover
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function(e) {
+                createSparkles(e.clientX, e.clientY);
+            });
+        });
+    </script>
+    <script>
+        // 🎵 AUDIO LOGIC (ONLY PART CHANGED)
+        const musicToggle = document.getElementById('musicToggle');
+        const bgMusic = document.getElementById('bgMusic');
+        let musicPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (!musicPlaying) {
+                bgMusic.play();
+                musicToggle.textContent = '🔊';
+            } else {
+                bgMusic.pause();
+                musicToggle.textContent = '🔇';
+            }
+            musicPlaying = !musicPlaying;
+        });
+
+        // 🔻 EVERYTHING BELOW IS YOUR ORIGINAL JS — UNCHANGED
+        createFloatingHearts();
+
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function(e) {
+                createSparkles(e.clientX, e.clientY);
+            });
+        });
+    </script>
+</body>
+</html>
